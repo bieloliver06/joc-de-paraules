@@ -1,0 +1,15 @@
+C:\Users\anxoa\Documents\Escola\Programació i tractament de dades\joc-de-paraules\obj\Debug\net7.0\joc-de-paraules.csproj.AssemblyReference.cache
+C:\Users\anxoa\Documents\Escola\Programació i tractament de dades\joc-de-paraules\obj\Debug\net7.0\joc-de-paraules.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\anxoa\Documents\Escola\Programació i tractament de dades\joc-de-paraules\obj\Debug\net7.0\joc-de-paraules.AssemblyInfoInputs.cache
+C:\Users\anxoa\Documents\Escola\Programació i tractament de dades\joc-de-paraules\obj\Debug\net7.0\joc-de-paraules.AssemblyInfo.cs
+C:\Users\anxoa\Documents\Escola\Programació i tractament de dades\joc-de-paraules\obj\Debug\net7.0\joc-de-paraules.csproj.CoreCompileInputs.cache
+C:\Users\anxoa\Documents\Escola\Programació i tractament de dades\joc-de-paraules\bin\Debug\net7.0\joc-de-paraules.exe
+C:\Users\anxoa\Documents\Escola\Programació i tractament de dades\joc-de-paraules\bin\Debug\net7.0\joc-de-paraules.deps.json
+C:\Users\anxoa\Documents\Escola\Programació i tractament de dades\joc-de-paraules\bin\Debug\net7.0\joc-de-paraules.runtimeconfig.json
+C:\Users\anxoa\Documents\Escola\Programació i tractament de dades\joc-de-paraules\bin\Debug\net7.0\joc-de-paraules.dll
+C:\Users\anxoa\Documents\Escola\Programació i tractament de dades\joc-de-paraules\bin\Debug\net7.0\joc-de-paraules.pdb
+C:\Users\anxoa\Documents\Escola\Programació i tractament de dades\joc-de-paraules\obj\Debug\net7.0\joc-de-paraules.dll
+C:\Users\anxoa\Documents\Escola\Programació i tractament de dades\joc-de-paraules\obj\Debug\net7.0\refint\joc-de-paraules.dll
+C:\Users\anxoa\Documents\Escola\Programació i tractament de dades\joc-de-paraules\obj\Debug\net7.0\joc-de-paraules.pdb
+C:\Users\anxoa\Documents\Escola\Programació i tractament de dades\joc-de-paraules\obj\Debug\net7.0\joc-de-paraules.genruntimeconfig.cache
+C:\Users\anxoa\Documents\Escola\Programació i tractament de dades\joc-de-paraules\obj\Debug\net7.0\ref\joc-de-paraules.dll

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "joc-de-paraules/1.0.0": {
+        "runtime": {
+          "joc-de-paraules.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "joc-de-paraules/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
