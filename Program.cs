@@ -1,4 +1,4 @@
-﻿namespace jocdeparaules
+﻿ namespace jocdeparaules
 {
     class Program
     {
@@ -27,6 +27,10 @@
                 {
                     Console.WriteLine("Has guanyat!");
                     break;
+                }
+                else if (wordGuess == "")
+                {
+                    Console.WriteLine("El que has introduit no és una paraula.");
                 }
                 else
                 {
