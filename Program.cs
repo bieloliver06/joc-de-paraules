@@ -24,16 +24,19 @@ namespace jocdeparaules
             char char3 = GetChar(3);
             
             string newWord = CheckWord(word, char1, char2, char3);
-            Console.WriteLine($"Paraula: {newWord}");
-            
+
             int lives = 3;
             while (lives > 0)
             {
+                Console.WriteLine($"Tens {lives} vides.");
+                Console.WriteLine($"Paraula: {newWord}");
                 Console.WriteLine("Quina és la paraula?");
                 string wordGuess = Console.ReadLine() ?? "";
-                while (CheckValidity(wordGuess))
+                while (input.Any(char.IsDigit))
                 {
                     Console.WriteLine("El que has introduit conté números.");
+                    Console.WriteLine($"Paraula: {newWord}");
+                    Console.WriteLine("Quina és la paraula?");
                     wordGuess = Console.ReadLine() ?? "";
                 }
                 if (wordGuess == word)
@@ -48,7 +51,6 @@ namespace jocdeparaules
                 else
                 {
                     lives--;
-                    Console.WriteLine($"Tens {lives} vides.");
                 }
             }
             if (lives == 0)
@@ -95,7 +97,7 @@ namespace jocdeparaules
             {
                 Console.Write($"Introdueix la {(index == 1 ? "primera" : index == 2 ? "segona" : index == 3 ? "tercera" : "")} lletra: ");
                 string input = Console.ReadLine() ?? "";
-                if (input.Length != 1 || !char.TryParse(input, out letter) || CheckValidity(input))
+                if (input.Length != 1 || !char.TryParse(input, out letter) || input.Any(char.IsDigit))
                 {
                     Console.WriteLine("El que has introduit no és una lletra.");
                 }
@@ -105,11 +107,6 @@ namespace jocdeparaules
                 }
             }
             return letter;
-        }
-
-        static bool CheckValidity(string word)
-        {
-            return word.Any(char.IsDigit);
         }
     }
 }
