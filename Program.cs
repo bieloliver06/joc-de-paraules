@@ -4,6 +4,14 @@
     {
         static void Main()
         {
+            Console.WriteLine(@"
+             _       ______  ____  ____     ________  __________________
+            | |     / / __ \/ __ \/ __ \   / ____/ / / / ____/ ___/ ___/
+            | | /| / / / / / /_/ / / / /  / / __/ / / / __/  \__ \\__ \ 
+            | |/ |/ / /_/ / _, _/ /_/ /  / /_/ / /_/ / /___ ___/ /__/ / 
+            |__/|__/\____/_/ |_/_____/   \____/\____/_____//____/____/ 
+            ");
+                        
             string[] words = System.IO.File.ReadAllLines("words.txt");
             Random r = new Random();
             int rInt = r.Next(0, words.Length);
@@ -23,6 +31,11 @@
             {
                 Console.WriteLine("Quina és la paraula?");
                 string wordGuess = Console.ReadLine() ?? "";
+                while (!CheckValidity(wordGuess))
+                {
+                    Console.WriteLine("El que has introduit conté números.");
+                    wordGuess = Console.ReadLine() ?? "";
+                }
                 if (wordGuess == word)
                 {
                     Console.WriteLine("Has guanyat!");
@@ -38,7 +51,11 @@
                     Console.WriteLine($"Tens {lives} vides.");
                 }
             }
-
+            if (lives == 0)
+            {
+                Console.WriteLine("Has perdut!");
+                Console.WriteLine($"La paraula era: {word}");
+            }
 
         }
 
@@ -76,31 +93,61 @@
         static char GetChar(int index)
         {
             char char1 = ' ';
-            while (char1 == ' ')
+            while (true)
             {
                 if (index == 1)
                 {
                     Console.WriteLine("Introdueix la primera lletra: ");
-                    char1 = char.TryParse(Console.ReadLine(), out char1) ? char1 : ' ';
                 }
                 else if (index == 2)
                 {
                     Console.WriteLine("Introdueix la segona lletra: ");
-                    char1 = char.TryParse(Console.ReadLine(), out char1) ? char1 : ' ';
                 }
                 else if (index == 3)
                 {
                     Console.WriteLine("Introdueix la tercera lletra: ");
-                    char1 = char.TryParse(Console.ReadLine(), out char1) ? char1 : ' ';
                 }
                 else
                 {
                     Console.WriteLine("Introdueix la lletra: ");
-                    char1 = char.TryParse(Console.ReadLine(), out char1) ? char1 : ' ';
+                }
+                string input = Console.ReadLine() ?? "";
+                if (input.Length > 1)
+                {
+                    Console.WriteLine("Només pots introduir una lletra.");
+                }
+                else if (!CheckValidity(input))
+                {
+                    Console.WriteLine("El que has introduit conté números.");
+                }
+                else
+                {
+                    char1 = char.TryParse(input, out char1) ? char1 : ' ';
+                    if (char1 == ' ')
+                    {
+                        Console.WriteLine("El que has introduit no és una lletra.");
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
             }
 
             return char1;
+        }
+
+        static bool CheckValidity(string word)
+        {
+            foreach (var letter in word)
+            {
+                if (int.TryParse(letter.ToString(), out int number))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }
