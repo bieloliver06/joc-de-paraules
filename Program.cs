@@ -1,4 +1,6 @@
-﻿ namespace jocdeparaules
+﻿using System.Text;
+
+namespace jocdeparaules
 {
     class Program
     {
@@ -13,9 +15,7 @@
             ");
                         
             string[] words = System.IO.File.ReadAllLines("words.txt");
-            Random r = new Random();
-            int rInt = r.Next(0, words.Length);
-            string word = words[rInt];
+            string word = words[new Random().Next(0, words.Length)];
             string underscoreWord = ConvertWord(word);
             Console.WriteLine($"Paraula: {underscoreWord}");
             
@@ -31,7 +31,7 @@
             {
                 Console.WriteLine("Quina és la paraula?");
                 string wordGuess = Console.ReadLine() ?? "";
-                while (!CheckValidity(wordGuess))
+                while (CheckValidity(wordGuess))
                 {
                     Console.WriteLine("El que has introduit conté números.");
                     wordGuess = Console.ReadLine() ?? "";
@@ -61,93 +61,55 @@
 
         static string ConvertWord(string word)
         {
-            char[] wordChar = word.ToCharArray();
-            string newWord = "";
-            foreach (var character in wordChar)
+            StringBuilder newWord = new StringBuilder();
+            for (int i = 0; i < word.Length; i++)
             {
-                newWord += "_ ";
+                newWord.Append("_ ");
             }
 
-            return newWord;
+            return newWord.ToString();
         }
         
         static string CheckWord(string word, char char1, char char2, char char3)
         {
-            char[] wordChar = word.ToCharArray();
-            string newWord = "";
-            foreach (var character in wordChar)
+            StringBuilder newWord = new StringBuilder();
+            foreach (var character in word)
             {
                 if (character == char1 || character == char2 || character == char3)
                 {
-                    newWord += character + " ";
+                    newWord.Append(character).Append(" ");
                 }
                 else
                 {
-                    newWord += "_" + " ";
+                    newWord.Append("_ ");
                 }
             }
 
-            return newWord;
+            return newWord.ToString();
         }
 
         static char GetChar(int index)
         {
-            char char1 = ' ';
+            char letter;
             while (true)
             {
-                if (index == 1)
-                {
-                    Console.WriteLine("Introdueix la primera lletra: ");
-                }
-                else if (index == 2)
-                {
-                    Console.WriteLine("Introdueix la segona lletra: ");
-                }
-                else if (index == 3)
-                {
-                    Console.WriteLine("Introdueix la tercera lletra: ");
-                }
-                else
-                {
-                    Console.WriteLine("Introdueix la lletra: ");
-                }
+                Console.Write($"Introdueix la {(index == 1 ? "primera" : index == 2 ? "segona" : index == 3 ? "tercera" : "")} lletra: ");
                 string input = Console.ReadLine() ?? "";
-                if (input.Length > 1)
+                if (input.Length != 1 || !char.TryParse(input, out letter) || CheckValidity(input))
                 {
-                    Console.WriteLine("Només pots introduir una lletra.");
-                }
-                else if (!CheckValidity(input))
-                {
-                    Console.WriteLine("El que has introduit conté números.");
+                    Console.WriteLine("El que has introduit no és una lletra.");
                 }
                 else
                 {
-                    char1 = char.TryParse(input, out char1) ? char1 : ' ';
-                    if (char1 == ' ')
-                    {
-                        Console.WriteLine("El que has introduit no és una lletra.");
-                    }
-                    else
-                    {
-                        break;
-                    }
+                    break;
                 }
             }
-
-            return char1;
+            return letter;
         }
 
         static bool CheckValidity(string word)
         {
-            foreach (var letter in word)
-            {
-                if (int.TryParse(letter.ToString(), out int number))
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return word.Any(char.IsDigit);
         }
     }
 }
