@@ -32,7 +32,7 @@ namespace jocdeparaules
                 Console.WriteLine($"Paraula: {newWord}");
                 Console.WriteLine("Quina és la paraula?");
                 string wordGuess = Console.ReadLine() ?? "";
-                while (input.Any(char.IsDigit))
+                while (wordGuess.Any(char.IsDigit))
                 {
                     Console.WriteLine("El que has introduit conté números.");
                     Console.WriteLine($"Paraula: {newWord}");
@@ -97,16 +97,15 @@ namespace jocdeparaules
             {
                 Console.Write($"Introdueix la {(index == 1 ? "primera" : index == 2 ? "segona" : index == 3 ? "tercera" : "")} lletra: ");
                 string input = Console.ReadLine() ?? "";
-                if (input.Length != 1 || !char.TryParse(input, out letter) || input.Any(char.IsDigit))
+                if (input.Length != 1 || input.Any(char.IsDigit) || !char.TryParse(input.ToLower(), out letter) )
                 {
                     Console.WriteLine("El que has introduit no és una lletra.");
                 }
                 else
                 {
-                    break;
+                    return letter;
                 }
             }
-            return letter;
         }
     }
 }
